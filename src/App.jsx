@@ -56,21 +56,22 @@ const JaiPortfolio = () => {
   useEffect(() => {
     const fetchSubstackPosts = async () => {
       try {
-        // Use CORS proxy to fetch the RSS feed
-        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://productiveconfusion.substack.com/feed'));
+        // Use RSS2JSON service which is more reliable for Substack
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://productiveconfusion.substack.com/feed'));
         const data = await response.json();
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data.contents, 'text/xml');
-        const items = xml.querySelectorAll('item');
         
-        const parsedPosts = Array.from(items).slice(0, 3).map(item => ({
-          title: item.querySelector('title')?.textContent || '',
-          link: item.querySelector('link')?.textContent || '',
-          pubDate: item.querySelector('pubDate')?.textContent || '',
-          description: item.querySelector('description')?.textContent || ''
-        }));
-        
-        setPosts(parsedPosts);
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+          const parsedPosts = data.items.slice(0, 3).map(item => ({
+            title: item.title || '',
+            link: item.link || '',
+            pubDate: item.pubDate || '',
+            description: item.description || item.content || ''
+          }));
+          
+          setPosts(parsedPosts);
+        } else {
+          console.error('RSS feed returned no items:', data);
+        }
         setLoadingPosts(false);
       } catch (error) {
         console.error('Error fetching Substack posts:', error);
