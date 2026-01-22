@@ -56,10 +56,11 @@ const JaiPortfolio = () => {
   useEffect(() => {
     const fetchSubstackPosts = async () => {
       try {
-        const response = await fetch('https://productiveconfusion.substack.com/feed');
-        const text = await response.text();
+        // Use CORS proxy to fetch the RSS feed
+        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://productiveconfusion.substack.com/feed'));
+        const data = await response.json();
         const parser = new DOMParser();
-        const xml = parser.parseFromString(text, 'text/xml');
+        const xml = parser.parseFromString(data.contents, 'text/xml');
         const items = xml.querySelectorAll('item');
         
         const parsedPosts = Array.from(items).slice(0, 3).map(item => ({
