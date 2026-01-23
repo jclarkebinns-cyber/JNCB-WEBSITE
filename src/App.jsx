@@ -584,7 +584,7 @@ const JaiPortfolio = () => {
               Get in Touch
             </h3>
             <a
-              href="mailto:Jclarkebinns@gmail.com"
+              href="mailto:hello@jclarkebinns.com"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -598,7 +598,7 @@ const JaiPortfolio = () => {
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'rgba(255, 255, 255, 0.7)'}
             >
-              <Mail size={20} strokeWidth={1.5} /> Jclarkebinns@gmail.com
+              <Mail size={20} strokeWidth={1.5} /> hello@jclarkebinns.com
             </a>
           </div>
         </div>
