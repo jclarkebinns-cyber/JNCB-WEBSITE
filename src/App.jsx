@@ -152,7 +152,7 @@ const JaiPortfolio = () => {
         top: 0,
         left: 0,
         right: 0,
-        padding: '2rem 4rem',
+        padding: 'clamp(1rem, 3vw, 2rem) clamp(1.5rem, 5vw, 4rem)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -160,10 +160,12 @@ const JaiPortfolio = () => {
         background: 'rgba(0, 0, 0, 0.6)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
         zIndex: 1000,
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        flexWrap: 'wrap',
+        gap: '1rem'
       }}>
         <div style={{
-          fontSize: '0.95rem',
+          fontSize: 'clamp(0.75rem, 2vw, 0.95rem)',
           fontWeight: 500,
           letterSpacing: '0.15em',
           color: '#ffffff'
@@ -171,7 +173,7 @@ const JaiPortfolio = () => {
           JAI N. CLARKE-BINNS
         </div>
         
-        <div style={{ display: 'flex', gap: '3rem' }}>
+        <div style={{ display: 'flex', gap: 'clamp(1rem, 3vw, 3rem)', flexWrap: 'wrap' }}>
           {['home', 'newsletter', 'consultancy'].map(section => (
             <button
               key={section}
@@ -224,7 +226,7 @@ const JaiPortfolio = () => {
         alignItems: 'center',
         position: 'relative',
         zIndex: 1,
-        padding: '4rem'
+        padding: 'clamp(2rem, 5vw, 4rem)'
       }}>
         <div style={{
           maxWidth: '1100px',
@@ -339,7 +341,7 @@ const JaiPortfolio = () => {
         alignItems: 'center',
         position: 'relative',
         zIndex: 1,
-        padding: '8rem 4rem'
+        padding: 'clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 4rem)'
       }}>
         <div style={{
           maxWidth: '1100px',
@@ -460,7 +462,7 @@ const JaiPortfolio = () => {
         alignItems: 'center',
         position: 'relative',
         zIndex: 1,
-        padding: '8rem 4rem'
+        padding: 'clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 4rem)'
       }}>
         <div style={{
           maxWidth: '1100px',
@@ -654,6 +656,36 @@ const JaiPortfolio = () => {
         ::selection {
           background: rgba(255, 255, 255, 0.2);
           color: #ffffff;
+        }
+
+        /* Mobile-specific improvements */
+        @media (max-width: 768px) {
+          /* Better touch targets */
+          button, a {
+            min-height: 44px;
+            min-width: 44px;
+          }
+
+          /* Adjust grid for mobile */
+          [style*="gridTemplateColumns"] {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* Stack nav on very small screens */
+          nav {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+
+          /* Improve readability on mobile */
+          p, li {
+            font-size: 0.95rem !important;
+          }
+        }
+
+        /* Improve touch scrolling */
+        * {
+          -webkit-overflow-scrolling: touch;
         }
       `}</style>
         </>
@@ -908,7 +940,7 @@ const CVPage = ({ chromeColor, onClose }) => {
   return (
     <div style={{
       minHeight: '100vh',
-      padding: '4rem 2rem',
+      padding: 'clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem)',
       maxWidth: '900px',
       margin: '0 auto',
       position: 'relative',
@@ -918,13 +950,13 @@ const CVPage = ({ chromeColor, onClose }) => {
         onClick={onClose}
         style={{
           position: 'fixed',
-          top: '2rem',
-          right: '2rem',
+          top: 'clamp(1rem, 3vw, 2rem)',
+          right: 'clamp(1rem, 3vw, 2rem)',
           background: 'rgba(255, 255, 255, 0.1)',
           border: '1px solid rgba(255, 255, 255, 0.2)',
           color: '#ffffff',
-          padding: '0.75rem 1.5rem',
-          fontSize: '0.85rem',
+          padding: 'clamp(0.6rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem)',
+          fontSize: 'clamp(0.75rem, 1.5vw, 0.85rem)',
           cursor: 'pointer',
           transition: 'all 0.3s ease',
           fontFamily: '"Inter", sans-serif',
