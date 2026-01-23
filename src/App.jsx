@@ -890,8 +890,6 @@ const ServiceCard = ({ title, unconventional, rigorous, chromeColor }) => {
   );
 };
 
-};
-
 const CVPage = ({ chromeColor, onClose }) => {
   const [expandedSections, setExpandedSections] = useState({});
 
