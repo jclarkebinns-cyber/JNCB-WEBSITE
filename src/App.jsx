@@ -610,7 +610,6 @@ const JaiPortfolio = () => {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          cursor: none;
         }
         
         body {
