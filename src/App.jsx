@@ -1152,19 +1152,85 @@ For full detailed CV, please visit jclarkebinns.com`;
       </div>
 
       <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
-        <ExperienceItem
-          title="Executive Consulting"
-          company="Bakken & Baeck (Digital Innovation Agency), SPACE10 (IKEA Future Living Lab)"
-          dates="Feb 2019 - May 2021"
-          expanded={expandedSections['consulting']}
-          onToggle={() => toggleSection('consulting')}
-          chromeColor={chromeColor}
-          bullets={[
-            "Conducted diagnostic research to surface organisational friction points, co-creating scalable solutions and culture interventions",
-            "Developed evidence-based DE&I strategies integrating stakeholder research with organisational data"
-          ]}
-          isSection={true}
-        />
+        <div style={{
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '1.5rem',
+          transition: 'all 0.3s ease',
+          cursor: 'pointer',
+          background: expandedSections['consulting'] ? 'rgba(255, 255, 255, 0.02)' : 'transparent'
+        }}
+        onClick={() => toggleSection('consulting')}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = `rgba(${chromeColor.rgb}, 0.3)`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        }}
+        >
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: expandedSections['consulting'] ? '1.5rem' : '0'
+          }}>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 400,
+              margin: 0,
+              color: `rgba(${chromeColor.rgb}, 0.9)`,
+              letterSpacing: '0.02em'
+            }}>
+              Executive Consulting
+            </h2>
+            <div style={{
+              fontSize: '1.5rem',
+              color: `rgba(${chromeColor.rgb}, 0.6)`,
+              transition: 'transform 0.3s ease',
+              transform: expandedSections['consulting'] ? 'rotate(180deg)' : 'rotate(0deg)'
+            }}>
+              ↓
+            </div>
+          </div>
+          {expandedSections['consulting'] && (
+            <div>
+              <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
+                Strategic OD Consultant
+              </div>
+              <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.5)', marginBottom: '0.3rem' }}>
+                Feb 2019 - May 2021
+              </div>
+              <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1rem', fontStyle: 'italic' }}>
+                Bakken & Baeck (Digital Innovation Agency), SPACE10 (IKEA Future Living Lab)
+              </div>
+              <ul style={{
+                paddingLeft: '1.5rem',
+                color: 'rgba(255, 255, 255, 0.7)',
+                lineHeight: 1.8,
+                listStyle: 'none',
+                margin: 0
+              }}>
+                {[
+                  "Conducted diagnostic research to surface organisational friction points, co-creating scalable solutions and culture interventions",
+                  "Developed evidence-based DE&I strategies integrating stakeholder research with organisational data"
+                ].map((item, i) => (
+                  <li key={i} style={{
+                    marginBottom: '0.75rem',
+                    paddingLeft: '1rem',
+                    position: 'relative',
+                    fontSize: '0.95rem'
+                  }}>
+                    <span style={{
+                      position: 'absolute',
+                      left: 0,
+                      color: `rgba(${chromeColor.rgb}, 0.6)`
+                    }}>→</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
 
       <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
