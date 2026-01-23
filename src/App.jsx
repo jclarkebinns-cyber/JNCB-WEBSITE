@@ -7,6 +7,17 @@ const JaiPortfolio = () => {
   const [sparkles, setSparkles] = useState([]);
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
+  
+  // Randomized chrome color on load
+  const [chromeColor] = useState(() => {
+    const colors = [
+      { name: 'silver', rgb: '192, 192, 192' },
+      { name: 'platinum', rgb: '229, 228, 226' },
+      { name: 'rose-gold', rgb: '183, 110, 121' },
+      { name: 'copper', rgb: '184, 115, 51' }
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,7 +116,7 @@ const JaiPortfolio = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: `radial-gradient(circle at ${20 + scrollY * 0.02}% ${30 + scrollY * 0.015}%, rgba(192, 192, 192, 0.03) 0%, transparent 60%)`,
+        background: `radial-gradient(circle at ${20 + scrollY * 0.02}% ${30 + scrollY * 0.015}%, rgba(${chromeColor.rgb}, 0.03) 0%, transparent 60%)`,
         pointerEvents: 'none',
         zIndex: 0
       }} />
@@ -146,12 +157,26 @@ const JaiPortfolio = () => {
         zIndex: 1000,
         transition: 'all 0.3s ease'
       }}>
-        <div style={{
-          fontSize: '0.95rem',
-          fontWeight: 500,
-          letterSpacing: '0.15em',
-          color: '#ffffff'
-        }}>
+        <div 
+          style={{
+            fontSize: '0.95rem',
+            fontWeight: 500,
+            letterSpacing: '0.15em',
+            color: '#ffffff',
+            cursor: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'silver\' stroke-width=\'2\'%3E%3Cpath d=\'m16 3 4 4-12 12-5 1 1-5Z\'/%3E%3C/svg%3E") 0 24, pointer',
+            transition: 'opacity 0.3s ease'
+          }}
+          onClick={() => {
+            // CV page trigger - will implement when content is ready
+            console.log('CV clicked - content coming soon!');
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = '0.7';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = '1';
+          }}
+        >
           JAI N. CLARKE-BINNS
         </div>
         
@@ -214,16 +239,31 @@ const JaiPortfolio = () => {
           maxWidth: '1100px',
           width: '100%'
         }}>
-          <h1 style={{
-            fontSize: 'clamp(3.5rem, 12vw, 9rem)',
-            fontWeight: 300,
-            margin: 0,
-            marginBottom: '2rem',
-            color: '#ffffff',
-            letterSpacing: '-0.04em',
-            lineHeight: 0.95,
-            position: 'relative'
-          }}>
+          <h1 
+            style={{
+              fontSize: 'clamp(2.5rem, 10vw, 9rem)',
+              fontWeight: 300,
+              margin: 0,
+              marginBottom: '2rem',
+              color: '#ffffff',
+              letterSpacing: '-0.04em',
+              lineHeight: 1,
+              position: 'relative',
+              whiteSpace: 'nowrap',
+              cursor: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'silver\' stroke-width=\'2\'%3E%3Cpath d=\'m16 3 4 4-12 12-5 1 1-5Z\'/%3E%3C/svg%3E") 0 24, pointer',
+              transition: 'opacity 0.3s ease'
+            }}
+            onClick={() => {
+              // CV page trigger - will implement when content is ready
+              console.log('CV clicked - content coming soon!');
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '0.85';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+          >
             Jai N. Clarke-Binns
             <div style={{
               position: 'absolute',
@@ -231,12 +271,13 @@ const JaiPortfolio = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'linear-gradient(135deg, transparent 40%, rgba(192, 192, 192, 0.15) 50%, transparent 60%)',
+              background: `linear-gradient(135deg, transparent 40%, rgba(${chromeColor.rgb}, 0.15) 50%, transparent 60%)`,
               backgroundSize: '200% 200%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               animation: 'subtleShine 8s ease-in-out infinite',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              whiteSpace: 'nowrap'
             }}>
               Jai N. Clarke-Binns
             </div>
@@ -363,7 +404,7 @@ const JaiPortfolio = () => {
                 border: '1px solid rgba(255, 255, 255, 0.08)'
               }}>
                 {posts.map((post, index) => (
-                  <NewsletterPost key={index} post={post} />
+                  <NewsletterPost key={index} post={post} chromeColor={chromeColor} />
                 ))}
               </div>
             ) : (
@@ -468,16 +509,19 @@ const JaiPortfolio = () => {
               title="AI Fluency & Organisational Development"
               unconventional="Most AI training treats people like they need to be sold on AI"
               rigorous="I develop frameworks that help people discern when and how AI actually serves their work"
+              chromeColor={chromeColor}
             />
             <ServiceCard
               title="Organisational Effectiveness"
               unconventional="I study what's broken, not what's working"
               rigorous="Research-backed approaches to uncover leading behaviours and dysfunctional patterns"
+              chromeColor={chromeColor}
             />
             <ServiceCard
               title="DE&I Strategy"
               unconventional="Equity work that questions performative metrics"
               rigorous="Evidence-based interventions that shift culture, not just optics"
+              chromeColor={chromeColor}
             />
           </div>
 
@@ -626,7 +670,7 @@ const JaiPortfolio = () => {
   );
 };
 
-const NewsletterPost = ({ post }) => {
+const NewsletterPost = ({ post, chromeColor }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   // Format date
@@ -660,7 +704,8 @@ const NewsletterPost = ({ post }) => {
         display: 'block',
         transition: 'all 0.4s ease',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        transform: isHovered ? 'perspective(1000px) rotateX(1deg) rotateY(-1deg)' : 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -672,7 +717,7 @@ const NewsletterPost = ({ post }) => {
         left: isHovered ? '-100%' : '-200%',
         width: '50%',
         height: '100%',
-        background: 'linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.05), transparent)',
+        background: `linear-gradient(90deg, transparent, rgba(${chromeColor.rgb}, 0.05), transparent)`,
         transition: 'left 1s ease',
         pointerEvents: 'none'
       }} />
@@ -769,7 +814,7 @@ const InfoCard = ({ title, org, description }) => (
   </div>
 );
 
-const ServiceCard = ({ title, unconventional, rigorous }) => {
+const ServiceCard = ({ title, unconventional, rigorous, chromeColor }) => {
   const [isHovered, setIsHovered] = React.useState(false);
   
   return (
@@ -792,7 +837,7 @@ const ServiceCard = ({ title, unconventional, rigorous }) => {
         left: isHovered ? '-100%' : '-200%',
         width: '50%',
         height: '100%',
-        background: 'linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.05), transparent)',
+        background: `linear-gradient(90deg, transparent, rgba(${chromeColor.rgb}, 0.05), transparent)`,
         transition: 'left 1s ease',
         pointerEvents: 'none'
       }} />
