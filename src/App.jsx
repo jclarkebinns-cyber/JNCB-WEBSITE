@@ -7,6 +7,7 @@ const JaiPortfolio = () => {
   const [sparkles, setSparkles] = useState([]);
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
+  const [showCV, setShowCV] = useState(false);
   
   // Randomized chrome color on load
   const [chromeColor] = useState(() => {
@@ -109,6 +110,10 @@ const JaiPortfolio = () => {
       position: 'relative',
       overflow: 'hidden'
     }}>
+      {showCV ? (
+        <CVPage chromeColor={chromeColor} onClose={() => setShowCV(false)} />
+      ) : (
+        <>
       {/* Subtle metallic gradient overlay */}
       <div style={{
         position: 'fixed',
@@ -240,8 +245,8 @@ const JaiPortfolio = () => {
               transition: 'opacity 0.3s ease'
             }}
             onClick={() => {
-              // CV page trigger - will implement when content is ready
-              console.log('CV clicked - content coming soon!');
+              setShowCV(true);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.opacity = '0.85';
@@ -652,6 +657,8 @@ const JaiPortfolio = () => {
           color: #ffffff;
         }
       `}</style>
+        </>
+      )}
     </div>
   );
 };
@@ -883,5 +890,332 @@ const ServiceCard = ({ title, unconventional, rigorous, chromeColor }) => {
     </div>
   );
 };
+
+};
+
+const CVPage = ({ chromeColor, onClose }) => {
+  const [expandedSections, setExpandedSections] = useState({});
+
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  const handleDownload = () => {
+    const cvText = `JAI N. CLARKE-BINNS
+CV / Portfolio
+
+Contact: hello@jclarkebinns.com | Tel: 07788724069
+Newsletter: productiveconfusion.substack.com
+
+Organisational strategist specialising in applied research, AI fluency, and organisational design.
+
+For full detailed CV, please visit jclarkebinns.com`;
+    
+    const blob = new Blob([cvText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Jai_Clarke-Binns_CV.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      padding: '4rem 2rem',
+      maxWidth: '900px',
+      margin: '0 auto',
+      position: 'relative',
+      overflowY: 'auto'
+    }}>
+      <button
+        onClick={onClose}
+        style={{
+          position: 'fixed',
+          top: '2rem',
+          right: '2rem',
+          background: 'rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          color: '#ffffff',
+          padding: '0.75rem 1.5rem',
+          fontSize: '0.85rem',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+          fontFamily: '"Inter", sans-serif',
+          letterSpacing: '0.05em',
+          textTransform: 'uppercase',
+          zIndex: 1000
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.background = 'rgba(255, 255, 255, 0.15)';
+          e.target.style.borderColor = `rgba(${chromeColor.rgb}, 0.5)`;
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+          e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+        }}
+      >
+        ← Back
+      </button>
+
+      <div style={{ marginBottom: '4rem', animation: 'fadeIn 0.6s ease' }}>
+        <h1 style={{
+          fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+          fontWeight: 300,
+          marginBottom: '1rem',
+          letterSpacing: '-0.03em',
+          background: `linear-gradient(135deg, #ffffff, rgba(${chromeColor.rgb}, 0.8))`,
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent'
+        }}>
+          Jai N. Clarke-Binns
+        </h1>
+        <p style={{
+          fontSize: '1.1rem',
+          color: 'rgba(255, 255, 255, 0.6)',
+          marginBottom: '1rem',
+          fontWeight: 300,
+          fontStyle: 'italic'
+        }}>
+          Organisational strategist | Surfacing root causes, building capability, enabling scalable change
+        </p>
+        <div style={{
+          fontSize: '0.9rem',
+          color: 'rgba(255, 255, 255, 0.5)',
+          display: 'flex',
+          gap: '1.5rem',
+          flexWrap: 'wrap'
+        }}>
+          <span>07788724069</span>
+          <span>hello@jclarkebinns.com</span>
+          <a href="https://productiveconfusion.substack.com" target="_blank" rel="noopener noreferrer" style={{
+            color: `rgba(${chromeColor.rgb}, 0.8)`,
+            textDecoration: 'none'
+          }}>
+            productiveconfusion.substack.com
+          </a>
+        </div>
+      </div>
+
+      <CVSection title="Professional Profile" chromeColor={chromeColor}>
+        <p style={{ lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.7)', fontWeight: 300 }}>
+          Organisational strategist specialising in applied research, AI fluency, and organisational design. I bridge the gap between leadership assumptions and operational reality by diagnosing root causes and designing scalable, evidence-based interventions. Through my 3L Framework, I reframe "people problems" as design problems to enable high-performance outcomes.
+        </p>
+      </CVSection>
+
+      <CVSection title="The 3L Framework" chromeColor={chromeColor}>
+        <p style={{ lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.7)', fontWeight: 300, marginBottom: '1rem' }}>
+          Performance gaps are often systems, clarity, or friction problems. My framework surfaces root causes by integrating Leadership beliefs, Literature research, and Lived Experience reality.
+        </p>
+      </CVSection>
+
+      <CVSection title="Experience" chromeColor={chromeColor}>
+        <ExperienceItem
+          title="Senior Employee Experience Partner"
+          company="Google DeepMind"
+          dates="Feb 2025 - Present"
+          expanded={expandedSections['deepmind1']}
+          onToggle={() => toggleSection('deepmind1')}
+          chromeColor={chromeColor}
+          bullets={[
+            "Deployed 3L Framework to diagnose performance gaps, delivering scalable evidence-based playbook",
+            "Architected AI-powered learning resource using NotebookLM to scale fairness framework",
+            "Developing AI fluency framework for strategic AI integration"
+          ]}
+        />
+
+        <ExperienceItem
+          title="Senior DE&I Partner"
+          company="Google DeepMind"
+          dates="Jul 2022 - Feb 2025"
+          expanded={expandedSections['deepmind2']}
+          onToggle={() => toggleSection('deepmind2')}
+          chromeColor={chromeColor}
+          bullets={[
+            "Directed £800k+ global DE&I budget",
+            "Engineered organization-wide DE&I data dashboard",
+            "Established governance framework for DE&I Working Groups",
+            "Facilitated strategic leadership coaching using IDI data"
+          ]}
+        />
+
+        <ExperienceItem
+          title="People and Culture Partner"
+          company="Google DeepMind"
+          dates="Jul 2020 - Jul 2022"
+          expanded={expandedSections['deepmind3']}
+          onToggle={() => toggleSection('deepmind3')}
+          chromeColor={chromeColor}
+          bullets={[
+            "Spearheaded organizational health review for 200+ FTEs",
+            "Directed company-wide Fairness Framework implementation",
+            "Maintained 85%+ engagement scores through restructures"
+          ]}
+        />
+      </CVSection>
+
+      <CVSection title="Board & Entrepreneurial Leadership" chromeColor={chromeColor}>
+        <div style={{ marginBottom: '1.5rem' }}>
+          <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
+            Board Member | Camden STEAM (2023 - Present)
+          </div>
+          <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem' }}>
+            Driving youth engagement through tech partnerships
+          </p>
+        </div>
+        <div>
+          <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
+            Founder & CEO | People of Creativity (2015 - 2021)
+          </div>
+          <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem' }}>
+            Built platform connecting 500+ professionals of color
+          </p>
+        </div>
+      </CVSection>
+
+      <CVSection title="Qualifications" chromeColor={chromeColor}>
+        <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, fontSize: '0.95rem' }}>
+          <li>Ethics of AI: London School of Economics</li>
+          <li>B.A. Criticism, Communication & Curation: Central Saint Martins</li>
+          <li>Professional Accreditations: IDI Qualified Assessor; Diploma in NLP; ILM Workplace Coaching; CIPD Employment Law</li>
+        </ul>
+      </CVSection>
+
+      <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+        <button
+          onClick={handleDownload}
+          style={{
+            padding: '1.2rem 3rem',
+            background: `linear-gradient(135deg, rgba(${chromeColor.rgb}, 0.2), rgba(${chromeColor.rgb}, 0.1))`,
+            border: `1px solid rgba(${chromeColor.rgb}, 0.3)`,
+            color: '#ffffff',
+            fontSize: '0.9rem',
+            fontWeight: 500,
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            fontFamily: '"Inter", sans-serif',
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = `linear-gradient(135deg, rgba(${chromeColor.rgb}, 0.3), rgba(${chromeColor.rgb}, 0.2))`;
+            e.target.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = `linear-gradient(135deg, rgba(${chromeColor.rgb}, 0.2), rgba(${chromeColor.rgb}, 0.1))`;
+            e.target.style.transform = 'translateY(0)';
+          }}
+        >
+          Download CV
+        </button>
+      </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+const CVSection = ({ title, children, chromeColor }) => (
+  <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
+    <h2 style={{
+      fontSize: '1.5rem',
+      fontWeight: 400,
+      marginBottom: '1.5rem',
+      color: `rgba(${chromeColor.rgb}, 0.9)`,
+      letterSpacing: '0.02em',
+      borderBottom: `1px solid rgba(${chromeColor.rgb}, 0.2)`,
+      paddingBottom: '0.5rem'
+    }}>
+      {title}
+    </h2>
+    {children}
+  </div>
+);
+
+const ExperienceItem = ({ title, company, dates, expanded, onToggle, chromeColor, bullets }) => (
+  <div style={{
+    marginBottom: '2rem',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    padding: '1.5rem',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+    background: expanded ? 'rgba(255, 255, 255, 0.02)' : 'transparent'
+  }}
+  onClick={onToggle}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.borderColor = `rgba(${chromeColor.rgb}, 0.3)`;
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+  }}
+  >
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      marginBottom: expanded ? '1rem' : '0'
+    }}>
+      <div>
+        <h3 style={{ fontSize: '1.1rem', fontWeight: 500, marginBottom: '0.25rem', color: '#ffffff' }}>
+          {title}
+        </h3>
+        <div style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '0.25rem' }}>
+          {company}
+        </div>
+        <div style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+          {dates}
+        </div>
+      </div>
+      <div style={{
+        fontSize: '1.5rem',
+        color: `rgba(${chromeColor.rgb}, 0.6)`,
+        transition: 'transform 0.3s ease',
+        transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)'
+      }}>
+        ↓
+      </div>
+    </div>
+    {expanded && (
+      <ul style={{
+        paddingLeft: '1.5rem',
+        color: 'rgba(255, 255, 255, 0.7)',
+        lineHeight: 1.8,
+        listStyle: 'none',
+        marginTop: '1rem'
+      }}>
+        {bullets.map((bullet, i) => (
+          <li key={i} style={{
+            marginBottom: '0.75rem',
+            paddingLeft: '1rem',
+            position: 'relative',
+            transition: 'color 0.3s ease',
+            fontSize: '0.95rem'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+          onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
+          >
+            <span style={{
+              position: 'absolute',
+              left: 0,
+              color: `rgba(${chromeColor.rgb}, 0.6)`
+            }}>→</span>
+            {bullet}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
 
 export default JaiPortfolio;
