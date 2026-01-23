@@ -1006,9 +1006,17 @@ For full detailed CV, please visit jclarkebinns.com`;
         </p>
       </CVSection>
 
-      <CVSection title="The 3L Framework" chromeColor={chromeColor}>
+      <CVSection title="The 3L Framework: Organisational Diagnosis That Delivers Results" chromeColor={chromeColor}>
         <p style={{ lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.7)', fontWeight: 300, marginBottom: '1rem' }}>
-          Performance gaps are often systems, clarity, or friction problems. My framework surfaces root causes by integrating Leadership beliefs, Literature research, and Lived Experience reality.
+          Performance gaps are often systems, clarity, or friction problems rather than talent issues. My framework surfaces root causes by integrating:
+        </p>
+        <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, marginBottom: '1rem' }}>
+          <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: '#ffffff' }}>Leadership:</strong> Stakeholder beliefs regarding performance drivers</li>
+          <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: '#ffffff' }}>Literature:</strong> Academic research and evidence-based insights</li>
+          <li style={{ marginBottom: '0.5rem' }}><strong style={{ color: '#ffffff' }}>Lived Experience:</strong> The reality of the employee experience</li>
+        </ul>
+        <p style={{ lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.7)', fontWeight: 300 }}>
+          Using TEAM (Task Experience Architecture Mapping), I identify the delta between perception and reality to build scalable solutions.
         </p>
       </CVSection>
 
@@ -1021,9 +1029,9 @@ For full detailed CV, please visit jclarkebinns.com`;
           onToggle={() => toggleSection('deepmind1')}
           chromeColor={chromeColor}
           bullets={[
-            "Deployed 3L Framework to diagnose performance gaps, delivering scalable evidence-based playbook",
-            "Architected AI-powered learning resource using NotebookLM to scale fairness framework",
-            "Developing AI fluency framework for strategic AI integration"
+            "Deployed 3L Framework to diagnose performance gaps, using TEAM methodology to identify teachable behaviors and deliver evidence-based playbooks",
+            "Architected AI-powered learning resource using NotebookLM to scale fairness framework via conversational AI, audio, and video",
+            "Developing AI fluency framework to transition organization toward strategic AI integration while maintaining human discernment"
           ]}
         />
 
@@ -1035,10 +1043,10 @@ For full detailed CV, please visit jclarkebinns.com`;
           onToggle={() => toggleSection('deepmind2')}
           chromeColor={chromeColor}
           bullets={[
-            "Directed £800k+ global DE&I budget",
-            "Engineered organization-wide DE&I data dashboard",
-            "Established governance framework for DE&I Working Groups",
-            "Facilitated strategic leadership coaching using IDI data"
+            "Directed £800k+ global DE&I budget across programming and community engagement",
+            "Engineered organization-wide DE&I data dashboard navigating international legal and privacy requirements for leadership accountability",
+            "Established governance framework for DE&I Working Groups, standardizing processes across distributed efforts",
+            "Facilitated strategic leadership coaching using IDI data, co-creating development plans aligned with leaders' priorities"
           ]}
         />
 
@@ -1050,9 +1058,9 @@ For full detailed CV, please visit jclarkebinns.com`;
           onToggle={() => toggleSection('deepmind3')}
           chromeColor={chromeColor}
           bullets={[
-            "Spearheaded organizational health review for 200+ FTEs",
-            "Directed company-wide Fairness Framework implementation",
-            "Maintained 85%+ engagement scores through restructures"
+            "Spearheaded first organizational health review for Research Engineering (200+ FTEs), integrating quantitative and qualitative data",
+            "Directed company-wide Fairness Framework implementation, auditing all P&C processes to eliminate bias",
+            "Partnered with Director of Research Engineering through multiple restructures, maintaining 85%+ engagement scores"
           ]}
         />
       </CVSection>
@@ -1063,7 +1071,7 @@ For full detailed CV, please visit jclarkebinns.com`;
             Board Member | Camden STEAM (2023 - Present)
           </div>
           <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem' }}>
-            Driving youth engagement through tech partnerships
+            Driving youth engagement initiatives through tech employer partnerships and educational institutions
           </p>
         </div>
         <div>
@@ -1071,9 +1079,57 @@ For full detailed CV, please visit jclarkebinns.com`;
             Founder & CEO | People of Creativity (2015 - 2021)
           </div>
           <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem' }}>
-            Built platform connecting 500+ professionals of color
+            Built platform connecting 500+ professionals of color in creative and technology sectors
           </p>
         </div>
+      </CVSection>
+
+      <CVSection title="Executive Consulting" chromeColor={chromeColor}>
+        <div style={{ marginBottom: '1rem' }}>
+          <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
+            Strategic OD Consultant
+          </div>
+          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.5)', marginBottom: '0.3rem' }}>
+            Feb 2019 - May 2021
+          </div>
+          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1rem', fontStyle: 'italic' }}>
+            Bakken & Baeck (Digital Innovation Agency), SPACE10 (IKEA Future Living Lab)
+          </div>
+          <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, listStyle: 'none' }}>
+            <li style={{ marginBottom: '0.75rem', paddingLeft: '1rem', position: 'relative' }}>
+              <span style={{ position: 'absolute', left: 0, color: `rgba(${chromeColor.rgb}, 0.6)` }}>→</span>
+              Conducted diagnostic research to surface organizational friction points, co-creating scalable solutions and culture interventions
+            </li>
+            <li style={{ marginBottom: '0.75rem', paddingLeft: '1rem', position: 'relative' }}>
+              <span style={{ position: 'absolute', left: 0, color: `rgba(${chromeColor.rgb}, 0.6)` }}>→</span>
+              Developed evidence-based DE&I strategies integrating stakeholder research with organizational data
+            </li>
+          </ul>
+        </div>
+      </CVSection>
+
+      <CVSection title="Scale-Up Leadership" chromeColor={chromeColor}>
+        <ExperienceItem
+          title="People and Culture Partner"
+          company="Satalia (AI Startup)"
+          dates="Feb 2017 - Jul 2020"
+          expanded={expandedSections['satalia']}
+          onToggle={() => toggleSection('satalia')}
+          chromeColor={chromeColor}
+          bullets={[
+            "Built comprehensive HR function from ground up in partnership with CEO during accelerated growth phase",
+            "Designed skills-based performance and compensation framework to enable greater organizational flexibility",
+            "Increased hiring velocity by 300% while maintaining rigorous quality standards"
+          ]}
+        />
+      </CVSection>
+
+      <CVSection title="Thought Leadership & Recognition" chromeColor={chromeColor}>
+        <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, fontSize: '0.95rem' }}>
+          <li>Judge: RSA Student Design Award (AI Category), 2024</li>
+          <li>Keynote Speaker: D&I Leaders LGBTQ+ at Work Conference, 2024</li>
+          <li>Published Authority: "AI has the Potential to Raise HR's Profile" (People Management Magazine)</li>
+        </ul>
       </CVSection>
 
       <CVSection title="Qualifications" chromeColor={chromeColor}>
