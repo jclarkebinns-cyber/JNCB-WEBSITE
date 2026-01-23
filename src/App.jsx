@@ -990,7 +990,16 @@ For full detailed CV, please visit jclarkebinns.com`;
           flexWrap: 'wrap'
         }}>
           <span>07788724069</span>
-          <span>hello@jclarkebinns.com</span>
+          <a href="mailto:hello@jclarkebinns.com" style={{
+            color: `rgba(${chromeColor.rgb}, 0.8)`,
+            textDecoration: 'none',
+            transition: 'color 0.3s ease'
+          }}
+          onMouseEnter={(e) => e.target.style.color = '#ffffff'}
+          onMouseLeave={(e) => e.target.style.color = `rgba(${chromeColor.rgb}, 0.8)`}
+          >
+            hello@jclarkebinns.com
+          </a>
           <a href="https://productiveconfusion.substack.com" target="_blank" rel="noopener noreferrer" style={{
             color: `rgba(${chromeColor.rgb}, 0.8)`,
             textDecoration: 'none'
@@ -1031,7 +1040,7 @@ For full detailed CV, please visit jclarkebinns.com`;
           bullets={[
             "Deployed 3L Framework to diagnose performance gaps, using TEAM methodology to identify teachable behaviors and deliver evidence-based playbooks",
             "Architected AI-powered learning resource using NotebookLM to scale fairness framework via conversational AI, audio, and video",
-            "Developing AI fluency framework to transition organization toward strategic AI integration while maintaining human discernment"
+            "Developing AI fluency framework to transition organisation toward strategic AI integration while maintaining human discernment"
           ]}
         />
 
@@ -1044,8 +1053,8 @@ For full detailed CV, please visit jclarkebinns.com`;
           chromeColor={chromeColor}
           bullets={[
             "Directed £800k+ global DE&I budget across programming and community engagement",
-            "Engineered organization-wide DE&I data dashboard navigating international legal and privacy requirements for leadership accountability",
-            "Established governance framework for DE&I Working Groups, standardizing processes across distributed efforts",
+            "Engineered organisation-wide DE&I data dashboard navigating international legal and privacy requirements for leadership accountability",
+            "Established governance framework for DE&I Working Groups, standardising processes across distributed efforts",
             "Facilitated strategic leadership coaching using IDI data, co-creating development plans aligned with leaders' priorities"
           ]}
         />
@@ -1058,9 +1067,23 @@ For full detailed CV, please visit jclarkebinns.com`;
           onToggle={() => toggleSection('deepmind3')}
           chromeColor={chromeColor}
           bullets={[
-            "Spearheaded first organizational health review for Research Engineering (200+ FTEs), integrating quantitative and qualitative data",
+            "Spearheaded first organisational health review for Research Engineering (200+ FTEs), integrating quantitative and qualitative data",
             "Directed company-wide Fairness Framework implementation, auditing all P&C processes to eliminate bias",
             "Partnered with Director of Research Engineering through multiple restructures, maintaining 85%+ engagement scores"
+          ]}
+        />
+
+        <ExperienceItem
+          title="People and Culture Partner"
+          company="Satalia (AI Startup)"
+          dates="Feb 2017 - Jul 2020"
+          expanded={expandedSections['satalia']}
+          onToggle={() => toggleSection('satalia')}
+          chromeColor={chromeColor}
+          bullets={[
+            "Built comprehensive HR function from ground up in partnership with CEO during accelerated growth phase",
+            "Designed skills-based performance and compensation framework to enable greater organisational flexibility",
+            "Increased hiring velocity by 300% while maintaining rigorous quality standards"
           ]}
         />
       </CVSection>
@@ -1085,59 +1108,148 @@ For full detailed CV, please visit jclarkebinns.com`;
       </CVSection>
 
       <CVSection title="Executive Consulting" chromeColor={chromeColor}>
-        <div style={{ marginBottom: '1rem' }}>
-          <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
-            Strategic OD Consultant
-          </div>
-          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.5)', marginBottom: '0.3rem' }}>
-            Feb 2019 - May 2021
-          </div>
-          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '1rem', fontStyle: 'italic' }}>
-            Bakken & Baeck (Digital Innovation Agency), SPACE10 (IKEA Future Living Lab)
-          </div>
-          <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, listStyle: 'none' }}>
-            <li style={{ marginBottom: '0.75rem', paddingLeft: '1rem', position: 'relative' }}>
-              <span style={{ position: 'absolute', left: 0, color: `rgba(${chromeColor.rgb}, 0.6)` }}>→</span>
-              Conducted diagnostic research to surface organizational friction points, co-creating scalable solutions and culture interventions
-            </li>
-            <li style={{ marginBottom: '0.75rem', paddingLeft: '1rem', position: 'relative' }}>
-              <span style={{ position: 'absolute', left: 0, color: `rgba(${chromeColor.rgb}, 0.6)` }}>→</span>
-              Developed evidence-based DE&I strategies integrating stakeholder research with organizational data
-            </li>
-          </ul>
-        </div>
-      </CVSection>
-
-      <CVSection title="Scale-Up Leadership" chromeColor={chromeColor}>
         <ExperienceItem
-          title="People and Culture Partner"
-          company="Satalia (AI Startup)"
-          dates="Feb 2017 - Jul 2020"
-          expanded={expandedSections['satalia']}
-          onToggle={() => toggleSection('satalia')}
+          title="Strategic OD Consultant"
+          company="Bakken & Baeck (Digital Innovation Agency), SPACE10 (IKEA Future Living Lab)"
+          dates="Feb 2019 - May 2021"
+          expanded={expandedSections['consulting']}
+          onToggle={() => toggleSection('consulting')}
           chromeColor={chromeColor}
           bullets={[
-            "Built comprehensive HR function from ground up in partnership with CEO during accelerated growth phase",
-            "Designed skills-based performance and compensation framework to enable greater organizational flexibility",
-            "Increased hiring velocity by 300% while maintaining rigorous quality standards"
+            "Conducted diagnostic research to surface organisational friction points, co-creating scalable solutions and culture interventions",
+            "Developed evidence-based DE&I strategies integrating stakeholder research with organisational data"
           ]}
         />
       </CVSection>
 
       <CVSection title="Thought Leadership & Recognition" chromeColor={chromeColor}>
-        <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, fontSize: '0.95rem' }}>
-          <li>Judge: RSA Student Design Award (AI Category), 2024</li>
-          <li>Keynote Speaker: D&I Leaders LGBTQ+ at Work Conference, 2024</li>
-          <li>Published Authority: "AI has the Potential to Raise HR's Profile" (People Management Magazine)</li>
-        </ul>
+        <div style={{
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '1.5rem',
+          transition: 'all 0.3s ease',
+          cursor: 'pointer',
+          background: expandedSections['thought'] ? 'rgba(255, 255, 255, 0.02)' : 'transparent'
+        }}
+        onClick={() => toggleSection('thought')}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = `rgba(${chromeColor.rgb}, 0.3)`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        }}
+        >
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 500, color: '#ffffff', margin: 0 }}>
+              Recognition & Speaking
+            </h3>
+            <div style={{
+              fontSize: '1.5rem',
+              color: `rgba(${chromeColor.rgb}, 0.6)`,
+              transition: 'transform 0.3s ease',
+              transform: expandedSections['thought'] ? 'rotate(180deg)' : 'rotate(0deg)'
+            }}>
+              ↓
+            </div>
+          </div>
+          {expandedSections['thought'] && (
+            <ul style={{
+              paddingLeft: '1.5rem',
+              color: 'rgba(255, 255, 255, 0.7)',
+              lineHeight: 1.8,
+              listStyle: 'none',
+              marginTop: '1rem'
+            }}>
+              {[
+                "Judge: RSA Student Design Award (AI), 2024",
+                "Keynote Speaker: D&I Leaders LGBTQ+ at Work Conference, 2024",
+                'Published Authority: "AI has the Potential to Raise HR\'s Profile" (People Management)'
+              ].map((item, i) => (
+                <li key={i} style={{
+                  marginBottom: '0.75rem',
+                  paddingLeft: '1rem',
+                  position: 'relative',
+                  fontSize: '0.95rem'
+                }}>
+                  <span style={{
+                    position: 'absolute',
+                    left: 0,
+                    color: `rgba(${chromeColor.rgb}, 0.6)`
+                  }}>→</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </CVSection>
 
       <CVSection title="Qualifications" chromeColor={chromeColor}>
-        <ul style={{ paddingLeft: '1.5rem', color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.8, fontSize: '0.95rem' }}>
-          <li>Ethics of AI: London School of Economics</li>
-          <li>B.A. Criticism, Communication & Curation: Central Saint Martins</li>
-          <li>Professional Accreditations: IDI Qualified Assessor; Diploma in NLP; ILM Workplace Coaching; CIPD Employment Law</li>
-        </ul>
+        <div style={{
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '1.5rem',
+          transition: 'all 0.3s ease',
+          cursor: 'pointer',
+          background: expandedSections['qualifications'] ? 'rgba(255, 255, 255, 0.02)' : 'transparent'
+        }}
+        onClick={() => toggleSection('qualifications')}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = `rgba(${chromeColor.rgb}, 0.3)`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        }}
+        >
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 500, color: '#ffffff', margin: 0 }}>
+              Education & Accreditations
+            </h3>
+            <div style={{
+              fontSize: '1.5rem',
+              color: `rgba(${chromeColor.rgb}, 0.6)`,
+              transition: 'transform 0.3s ease',
+              transform: expandedSections['qualifications'] ? 'rotate(180deg)' : 'rotate(0deg)'
+            }}>
+              ↓
+            </div>
+          </div>
+          {expandedSections['qualifications'] && (
+            <ul style={{
+              paddingLeft: '1.5rem',
+              color: 'rgba(255, 255, 255, 0.7)',
+              lineHeight: 1.8,
+              listStyle: 'none',
+              marginTop: '1rem'
+            }}>
+              {[
+                "Ethics of AI: London School of Economics",
+                "B.A. Criticism, Communication & Curation: Central Saint Martins",
+                "Professional Accreditations: IDI Qualified Assessor; Diploma in NLP; ILM Workplace Coaching; CIPD Employment Law (Level 5)"
+              ].map((item, i) => (
+                <li key={i} style={{
+                  marginBottom: '0.75rem',
+                  paddingLeft: '1rem',
+                  position: 'relative',
+                  fontSize: '0.95rem'
+                }}>
+                  <span style={{
+                    position: 'absolute',
+                    left: 0,
+                    color: `rgba(${chromeColor.rgb}, 0.6)`
+                  }}>→</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </CVSection>
 
       <div style={{ marginTop: '4rem', textAlign: 'center' }}>
