@@ -1088,28 +1088,72 @@ For full detailed CV, please visit jclarkebinns.com`;
         />
       </CVSection>
 
-      <CVSection title="Board & Entrepreneurial Leadership" chromeColor={chromeColor}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
-            Board Member | Camden STEAM (2023 - Present)
+      <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
+        <div style={{
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          padding: '1.5rem',
+          transition: 'all 0.3s ease',
+          cursor: 'pointer',
+          background: expandedSections['board'] ? 'rgba(255, 255, 255, 0.02)' : 'transparent'
+        }}
+        onClick={() => toggleSection('board')}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = `rgba(${chromeColor.rgb}, 0.3)`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        }}
+        >
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: expandedSections['board'] ? '1.5rem' : '0'
+          }}>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 400,
+              margin: 0,
+              color: `rgba(${chromeColor.rgb}, 0.9)`,
+              letterSpacing: '0.02em'
+            }}>
+              Board & Entrepreneurial Leadership
+            </h2>
+            <div style={{
+              fontSize: '1.5rem',
+              color: `rgba(${chromeColor.rgb}, 0.6)`,
+              transition: 'transform 0.3s ease',
+              transform: expandedSections['board'] ? 'rotate(180deg)' : 'rotate(0deg)'
+            }}>
+              ↓
+            </div>
           </div>
-          <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem' }}>
-            Driving youth engagement initiatives through tech employer partnerships and educational institutions
-          </p>
+          {expandedSections['board'] && (
+            <div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
+                  Board Member | Camden STEAM (2023 - Present)
+                </div>
+                <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem', margin: 0 }}>
+                  Driving youth engagement initiatives through tech employer partnerships and educational institutions
+                </p>
+              </div>
+              <div>
+                <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
+                  Founder & CEO | People of Creativity (2015 - 2021)
+                </div>
+                <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem', margin: 0 }}>
+                  Built platform connecting 500+ professionals of color in creative and technology sectors
+                </p>
+              </div>
+            </div>
+          )}
         </div>
-        <div>
-          <div style={{ fontWeight: 500, marginBottom: '0.3rem', color: '#ffffff' }}>
-            Founder & CEO | People of Creativity (2015 - 2021)
-          </div>
-          <p style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6, fontSize: '0.95rem' }}>
-            Built platform connecting 500+ professionals of color in creative and technology sectors
-          </p>
-        </div>
-      </CVSection>
+      </div>
 
-      <CVSection title="Executive Consulting" chromeColor={chromeColor}>
+      <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
         <ExperienceItem
-          title="Strategic OD Consultant"
+          title="Executive Consulting"
           company="Bakken & Baeck (Digital Innovation Agency), SPACE10 (IKEA Future Living Lab)"
           dates="Feb 2019 - May 2021"
           expanded={expandedSections['consulting']}
@@ -1119,10 +1163,11 @@ For full detailed CV, please visit jclarkebinns.com`;
             "Conducted diagnostic research to surface organisational friction points, co-creating scalable solutions and culture interventions",
             "Developed evidence-based DE&I strategies integrating stakeholder research with organisational data"
           ]}
+          isSection={true}
         />
-      </CVSection>
+      </div>
 
-      <CVSection title="Thought Leadership & Recognition" chromeColor={chromeColor}>
+      <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
         <div style={{
           border: '1px solid rgba(255, 255, 255, 0.1)',
           padding: '1.5rem',
@@ -1141,11 +1186,18 @@ For full detailed CV, please visit jclarkebinns.com`;
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            marginBottom: expandedSections['thought'] ? '1rem' : '0'
           }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 500, color: '#ffffff', margin: 0 }}>
-              Recognition & Speaking
-            </h3>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 400,
+              margin: 0,
+              color: `rgba(${chromeColor.rgb}, 0.9)`,
+              letterSpacing: '0.02em'
+            }}>
+              Thought Leadership & Recognition
+            </h2>
             <div style={{
               fontSize: '1.5rem',
               color: `rgba(${chromeColor.rgb}, 0.6)`,
@@ -1161,7 +1213,7 @@ For full detailed CV, please visit jclarkebinns.com`;
               color: 'rgba(255, 255, 255, 0.7)',
               lineHeight: 1.8,
               listStyle: 'none',
-              marginTop: '1rem'
+              margin: 0
             }}>
               {[
                 "Judge: RSA Student Design Award (AI), 2024",
@@ -1185,9 +1237,9 @@ For full detailed CV, please visit jclarkebinns.com`;
             </ul>
           )}
         </div>
-      </CVSection>
+      </div>
 
-      <CVSection title="Qualifications" chromeColor={chromeColor}>
+      <div style={{ marginBottom: '3rem', animation: 'fadeIn 0.6s ease' }}>
         <div style={{
           border: '1px solid rgba(255, 255, 255, 0.1)',
           padding: '1.5rem',
@@ -1206,11 +1258,18 @@ For full detailed CV, please visit jclarkebinns.com`;
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            marginBottom: expandedSections['qualifications'] ? '1rem' : '0'
           }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 500, color: '#ffffff', margin: 0 }}>
-              Education & Accreditations
-            </h3>
+            <h2 style={{
+              fontSize: '1.5rem',
+              fontWeight: 400,
+              margin: 0,
+              color: `rgba(${chromeColor.rgb}, 0.9)`,
+              letterSpacing: '0.02em'
+            }}>
+              Qualifications
+            </h2>
             <div style={{
               fontSize: '1.5rem',
               color: `rgba(${chromeColor.rgb}, 0.6)`,
@@ -1226,7 +1285,7 @@ For full detailed CV, please visit jclarkebinns.com`;
               color: 'rgba(255, 255, 255, 0.7)',
               lineHeight: 1.8,
               listStyle: 'none',
-              marginTop: '1rem'
+              margin: 0
             }}>
               {[
                 "Ethics of AI: London School of Economics",
@@ -1250,7 +1309,7 @@ For full detailed CV, please visit jclarkebinns.com`;
             </ul>
           )}
         </div>
-      </CVSection>
+      </div>
 
       <div style={{ marginTop: '4rem', textAlign: 'center' }}>
         <button
