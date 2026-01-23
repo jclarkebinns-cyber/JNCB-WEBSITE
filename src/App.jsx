@@ -901,25 +901,8 @@ const CVPage = ({ chromeColor, onClose }) => {
   };
 
   const handleDownload = () => {
-    const cvText = `JAI N. CLARKE-BINNS
-CV / Portfolio
-
-Contact: hello@jclarkebinns.com | Tel: 07788724069
-Newsletter: productiveconfusion.substack.com
-
-Organisational strategist specialising in applied research, AI fluency, and organisational design.
-
-For full detailed CV, please visit jclarkebinns.com`;
-    
-    const blob = new Blob([cvText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Jai_Clarke-Binns_CV.txt';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    // Download the hosted PDF
+    window.open('/Jai_Clarke-Binns_CV.pdf', '_blank');
   };
 
   return (
