@@ -226,7 +226,8 @@ const JaiPortfolio = () => {
         alignItems: 'center',
         position: 'relative',
         zIndex: 1,
-        padding: 'clamp(2rem, 5vw, 4rem)'
+        padding: 'clamp(2rem, 5vw, 4rem)',
+        paddingTop: 'clamp(6rem, 12vw, 8rem)'
       }}>
         <div style={{
           maxWidth: '1100px',
