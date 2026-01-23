@@ -157,26 +157,12 @@ const JaiPortfolio = () => {
         zIndex: 1000,
         transition: 'all 0.3s ease'
       }}>
-        <div 
-          style={{
-            fontSize: '0.95rem',
-            fontWeight: 500,
-            letterSpacing: '0.15em',
-            color: '#ffffff',
-            cursor: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'silver\' stroke-width=\'2\'%3E%3Cpath d=\'m16 3 4 4-12 12-5 1 1-5Z\'/%3E%3C/svg%3E") 0 24, pointer',
-            transition: 'opacity 0.3s ease'
-          }}
-          onClick={() => {
-            // CV page trigger - will implement when content is ready
-            console.log('CV clicked - content coming soon!');
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.opacity = '0.7';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.opacity = '1';
-          }}
-        >
+        <div style={{
+          fontSize: '0.95rem',
+          fontWeight: 500,
+          letterSpacing: '0.15em',
+          color: '#ffffff'
+        }}>
           JAI N. CLARKE-BINNS
         </div>
         
